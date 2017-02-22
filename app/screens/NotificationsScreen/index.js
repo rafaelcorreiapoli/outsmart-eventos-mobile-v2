@@ -53,7 +53,7 @@ class NotificationsScreen extends Component {
   render() {
     return (
       <ScreenWrapper style={styles.container}>
-        <Text h4 style={styles.title}>Qual sua comida preferida?</Text>
+        <Text h4 style={styles.title}>Qual sua refeição preferida?</Text>
         <View style={styles.optionsContainer}>
           {
             this.state.checks.map((check, sectionId) => (
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
     marginTop: 10,
   }
 })
