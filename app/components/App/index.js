@@ -9,6 +9,7 @@ import {
   StyleSheet,
   StatusBar
 } from 'react-native';
+import SignInScreen from '@screens/SignInScreen'
 
 import TabNavigator from '@components/TabNavigator'
 
@@ -29,7 +30,8 @@ export default class App extends Component {
         <StatusBar
           barStyle="light-content"
         />
-        <TabNavigator />
+        <SignInScreen />
+        {/* <TabNavigator /> */}
       </View>
     );
   }
