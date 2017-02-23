@@ -8,6 +8,7 @@ import {
   Text,
   StyleSheet,
   ListView,
+  TouchableOpacity
 } from 'react-native';
 import ScreenWrapper from '@components/ScreenWrapper'
 import {
@@ -17,6 +18,14 @@ import {
 } from 'react-native-elements'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { StackNavigator } from 'react-navigation'
+import { NavigationActions } from 'react-navigation'
+
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [
+    NavigationActions.navigate({ routeName: 'SignIn'})
+  ]
+})
 
 class ExtraPageScreen extends Component {
   static navigationOptions = {
@@ -51,23 +60,42 @@ class ExtraPageScreen extends Component {
     this.ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     })
+
+    this._renderRow = this._renderRow.bind(this)
   }
 
   _renderRow(extraPage, sectionId) {
     return (
-      <Card
-        containerStyle={{
-          padding: 0,
-          margin: 0,
-          borderWidth: 0
+      <TouchableOpacity
+        onPress={() => {
+          console.log('press')
+          this.props.navigation.dispatch(
+            {
+                type: 'Navigation/NAVIGATE',
+                routeName: 'Guest',
+                action: {
+                  type: 'Navigation/NAVIGATE',
+                  routeName: 'SignIn',
+                }
+            }
+          )
         }}
       >
-      <ListItem
-        key={sectionId}
-        title={extraPage.title}
-        leftIcon={{name: extraPage.icon}}
-      />
-      </Card>
+        <Card
+          containerStyle={{
+            padding: 0,
+            margin: 0,
+            borderWidth: 0
+          }}
+        >
+          <ListItem
+            key={sectionId}
+            title={extraPage.title}
+            leftIcon={{name: extraPage.icon}}
+          />
+        </Card>
+      </TouchableOpacity>
+
     )
   }
   render() {

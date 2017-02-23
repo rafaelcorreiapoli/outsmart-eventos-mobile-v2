@@ -11,28 +11,121 @@ import {
   Text,
   TouchableOpacity,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  Animated,
+  Dimensions,
+  Easing,
+  ActivityIndicator
 } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { NavigationActions } from 'react-navigation'
+
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [
+    NavigationActions.navigate({ routeName: 'TabNavigator'})
+  ]
+})
+
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 
-
+const DEVICE_WIDTH = Dimensions.get('window').width
+const BUTTON_HEIGHT = 60
+const FINAL_BUTTON_WIDTH = BUTTON_HEIGHT
+const FINAL_BORDER_RADIUS = BUTTON_HEIGHT / 2
+const FINAL_SCALE = 22
 const Divider = () => (
   <View style={styles.divider} />
 )
 export default class SignInScreen extends Component {
-
+  static navigationOptions = {
+    header: {
+      visible: false
+    }
+  }
   static defaultProps = {}
 
   static propTypes = {}
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: false,
+      growing: false,
+    };
+
+    this.buttonAnimated = new Animated.Value(0)
+    this.buttonGrow = new Animated.Value(0)
+
+    this.buttonGrow.addListener((v) => {
+      if (v.value > 0) {
+        this.setState({
+          growing: true
+        })
+      }
+    })
+    this._handlePress = this._handlePress.bind(this)
+  }
+
+  _handlePress() {
+    this.setState({
+      loading: true
+    })
+    this._startWidthAnimation()
+  }
+  _startWidthAnimation() {
+    Animated.spring(
+      this.buttonAnimated,
+      {
+        toValue: 1,
+        duration: 200,
+      }
+    ).start();
+
+    const loginPromise = () => new Promise(resolve => setTimeout(resolve, 2500))
+
+    loginPromise()
+    .then(() => {
+      Animated.sequence([
+        Animated.timing(
+          this.buttonGrow,
+          {
+            toValue: 1,
+            duration: 200,
+            easing: Easing.linear
+          }
+        ),
+      ])
+      .start(() => {
+        this.props.navigation.dispatch(resetAction)
+      })
+    })
+  }
+
+  _startGrowAnimation() {
+
   }
 
   render() {
+    const {
+      loading,
+      growing
+    } = this.state
+
+    const animatedWidth = this.buttonAnimated.interpolate({
+	    inputRange: [0, 1],
+	    outputRange: [DEVICE_WIDTH, FINAL_BUTTON_WIDTH]
+	  })
+    const animatedBorderRadius = this.buttonAnimated.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, FINAL_BORDER_RADIUS]
+    })
+    const animatedScale = this.buttonGrow.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, FINAL_SCALE]
+    })
+
     return (
       <Image
         source={require('@images/login1_bg.png')}
@@ -42,7 +135,7 @@ export default class SignInScreen extends Component {
         <View style={styles.overlay} />
         <KeyboardAwareScrollView
           behaviour="padding"
-          style={styles.formContainer}
+          style={styles.keyboardAware}
         >
           <View style={styles.logoContainer}>
             <Image
@@ -64,7 +157,7 @@ export default class SignInScreen extends Component {
               <TextInput
                 autoCapitalize="none"
                 style={styles.textInput}
-                placeholder="Username"
+                placeholder="Usuário"
                 placeholderTextColor="#C5C5C7"
               />
             </View>
@@ -81,7 +174,7 @@ export default class SignInScreen extends Component {
               />
               <TextInput
                 style={styles.textInput}
-                placeholder="Password"
+                placeholder="Senha"
                 placeholderTextColor="#C5C5C7"
                 secureTextEntry
               />
@@ -91,27 +184,37 @@ export default class SignInScreen extends Component {
 
           <TouchableOpacity>
             <Text style={styles.forgotPassword}>
-              Forgot password?
+              Esqueceu a senha?
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.touchableOpacity}
-            onPress={() => {}}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.buttonText}>
-              Sign In
-            </Text>
-          </TouchableOpacity>
+          <Animated.View style={{zIndex: 99, transform: [{scale: animatedScale}], backgroundColor: '#FF3366', width: animatedWidth, alignSelf: 'center', borderRadius: animatedBorderRadius }}>
+            <TouchableOpacity
+              style={styles.touchableOpacity}
+              onPress={this._handlePress}
+              activeOpacity={0.7}
+            >
+              {
+                (loading && !growing) &&
+                <ActivityIndicator animating color="white" />
+              }
+              {
+                (!loading && !growing) &&
+                <Text style={styles.buttonText}>
+                  Entrar
+                </Text>
+              }
+            </TouchableOpacity>
+          </Animated.View>
+
 
           <View style={styles.signUpContainer}>
             <Text style={styles.signUpMessage}>
-              Don't have an account?
+              Não tem conta?
             </Text>
             <TouchableOpacity>
               <Text style={styles.signUpLink}>
-                Sign Up
+                Registrar
               </Text>
             </TouchableOpacity>
           </View>
@@ -126,13 +229,16 @@ export default class SignInScreen extends Component {
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
-    // backgroundColor: 'red'
+    backgroundColor: 'red'
   },
   container: {
     flex: 1,
     width: null,
     height: null,
     backgroundColor: '#757577',
+  },
+  keyboardAware: {
+    flex: 1,
   },
   textInputContainer: {
     paddingLeft: 20,
@@ -141,14 +247,16 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 40,
+    // backgroundColor: 'black'
     color: 'white',
     marginLeft: 20,
     flex: 1,
   },
   logoContainer: {
     // flex: 0.8,
-    height: 140,
-    // paddingVertical: 16,
+    height: 120,
+    marginTop: 40,
+    // paddingVertical: 20,
     // paddingTop: 30,
     // paddingBottom: 30
   },
@@ -160,7 +268,7 @@ const styles = StyleSheet.create({
   forgotPassword: {
     textAlign: 'right',
     marginRight: 20,
-    marginBottom: 30,
+    marginBottom: 80,
     fontWeight: '100',
     fontSize: 16,
     color: '#CCC',
@@ -176,11 +284,13 @@ const styles = StyleSheet.create({
   touchableOpacity: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FF3366',
-    height: 60,
+    // backgroundColor: '#FF3366',
+    height: BUTTON_HEIGHT,
   },
   formContainer: {
-    paddingVertical: 30,
+    paddingTop: 30,
+    paddingBottom: 10,
+    // marginBottom: 50,
     flex: 1,
   },
   buttonText: {

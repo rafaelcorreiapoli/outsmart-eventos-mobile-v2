@@ -12,6 +12,7 @@ import {
 import SignInScreen from '@screens/SignInScreen'
 
 import TabNavigator from '@components/TabNavigator'
+import MainNavigator from '@components/MainNavigator'
 
 export default class App extends Component {
 
@@ -30,7 +31,8 @@ export default class App extends Component {
         <StatusBar
           barStyle="light-content"
         />
-        <SignInScreen />
+        {/* <SignInScreen /> */}
+        <MainNavigator />
         {/* <TabNavigator /> */}
       </View>
     );

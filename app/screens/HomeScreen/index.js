@@ -128,13 +128,14 @@ class HomeScreen extends Component {
         avatarUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
         subtitle: 'Vice Chairman'
       },
-      
+
     ]
 
     const dataSource = this.ds.cloneWithRows(users)
 
     return (
       <ScreenWrapper style={styles.container}>
+
         <ListView
           dataSource={dataSource}
           renderRow={this._renderRow}
