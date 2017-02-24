@@ -68,7 +68,7 @@ class HomeScreen extends Component {
           backgroundColor: 'white'
         }}
         titleStyle={{
-          fontFamily: 'Raleway-Light'
+          fontFamily: 'Raleway-Regular'
         }}
         subtitleStyle={{
           fontFamily: 'Raleway-Light'

@@ -5,7 +5,8 @@ import React, {
 
 import {
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 import ScreenWrapper from '@components/ScreenWrapper'
 import { CheckBox, Text, Button } from 'react-native-elements'
@@ -14,18 +15,21 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 class NotificationsScreen extends Component {
   static navigationOptions = {
-    title: 'Votação',
+    title: 'Pesquisa',
     header: {
       tintColor: 'white',
       style: {
         backgroundColor: '#E62565'
+      },
+      titleStyle: {
+        fontFamily: 'Raleway-Regular',
       }
     },
     tabBar: {
-      label: 'Usuários',
+      label: 'Pesquisa',
       icon: ({ tintColor }) => (
         <Ionicons
-          name="ios-contacts-outline"
+          name="ios-list-outline"
           size={28}
           style={{ marginTop: 4 }}
           color={tintColor}
@@ -53,23 +57,64 @@ class NotificationsScreen extends Component {
   render() {
     return (
       <ScreenWrapper style={styles.container}>
-        <Text h4 style={styles.title}>Qual sua refeição preferida?</Text>
+        <View style={{flexDirection: 'row', zIndex: 99, alignItems: 'center', backgroundColor: '#f8f8f9'}}>
+          <View style={{
+            width: 40,
+            height: 40,
+            borderRadius: 35,
+            backgroundColor: '#7fddd1',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginHorizontal: 4,
+            marginVertical: 4,
+          }}>
+            <Text style={{
+              fontSize: 18,
+              backgroundColor: 'transparent',
+              color: '#fff'
+            }}>
+              1.
+            </Text>
+          </View>
+          <Text h5 style={styles.title}>Qual sua refeição preferida?</Text>
+        </View>
+
         <View style={styles.optionsContainer}>
           {
-            this.state.checks.map((check, sectionId) => (
+            this.state.checks.map((check, i) => (
               <CheckBox
-                key={sectionId}
-                title='Arroz'
+                key={i}
+                title={['Arroz', 'Feijão', 'Lasanha', 'Salada'][i % 4]}
                 checked={check}
-                containerStyle={{
+                iconType='material'
+                checkedIcon='check'
+                uncheckedIcon='check'
+                checkedColor="#7fddd1"
+                uncheckedColor="#bcbcbe"
+                fontFamily='Raleway-Light'
+                containerStyle={[{
+                  backgroundColor: '#fff',
                   marginLeft: 0,
                   marginRight: 0,
                   marginBottom: 0,
                   marginTop: 0,
+                  borderBottomWidth: 1,
+                  borderBottomColor: '#f3f3f4',
+                  borderTopWidth: 0,
+                  height: 60,
+                  justifyContent: 'center',
+                  borderRadius: 0,
+                }, check && {
+                  borderLeftWidth: 4,
+                  borderLeftColor: '#7fddd1',
+                  backgroundColor: '#f8f8f9'
+                }]}
+                textStyle={check && {
+                  color: '#c8c8c9'
                 }}
                 onPress={() => {
                   const newCheckArray = this.state.checks.map(() => false)
-                  newCheckArray[sectionId] = true
+                  newCheckArray[i] = true
                   this.setState({
                     checks: newCheckArray
                   })
@@ -80,9 +125,16 @@ class NotificationsScreen extends Component {
         </View>
 
         <Button
-          icon={{name: 'code'}}
-          backgroundColor='#03A9F4'
-          buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+          icon={{name: 'send'}}
+          iconRight
+          backgroundColor='#ff3366'
+          buttonStyle={{
+            borderRadius: 0,
+            marginLeft: 0,
+            marginRight: 0,
+            marginBottom: 0,
+          }}
+          fontFamily='Raleway-Light'
           title='Votar' />
       </ScreenWrapper>
     );
@@ -103,11 +155,11 @@ const styles = StyleSheet.create({
   },
   optionsContainer: {
     flex: 1,
-    // backgroundColor: 'blue'
   },
   title: {
-    textAlign: 'center',
-    marginBottom: 20,
+    flex: 1,
+    marginBottom: 10,
     marginTop: 10,
+    fontFamily: 'Raleway-Light'
   }
 })
