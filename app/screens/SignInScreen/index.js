@@ -6,9 +6,7 @@ import React, {
 import {
   View,
   StyleSheet,
-  TextInput,
   Image,
-  Text,
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
@@ -17,6 +15,8 @@ import {
   Easing,
   ActivityIndicator
 } from 'react-native';
+import Text from '@components/Text'
+import TextInput from '@components/TextInput'
 import { FormLabel, FormInput } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { NavigationActions } from 'react-navigation'
@@ -188,7 +188,13 @@ export default class SignInScreen extends Component {
             </Text>
           </TouchableOpacity>
 
-          <Animated.View style={{zIndex: 99, transform: [{scale: animatedScale}], backgroundColor: '#FF3366', width: animatedWidth, alignSelf: 'center', borderRadius: animatedBorderRadius }}>
+          <Animated.View
+            style={[styles.animatedButton, {
+              width: animatedWidth,
+              transform: [{scale: animatedScale}],
+              borderRadius: animatedBorderRadius }
+            ]}
+          >
             <TouchableOpacity
               style={styles.touchableOpacity}
               onPress={this._handlePress}
@@ -243,22 +249,18 @@ const styles = StyleSheet.create({
   textInputContainer: {
     paddingLeft: 20,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textInput: {
     height: 40,
-    // backgroundColor: 'black'
     color: 'white',
     marginLeft: 20,
     flex: 1,
   },
   logoContainer: {
-    // flex: 0.8,
     height: 120,
-    marginTop: 40,
-    // paddingVertical: 20,
-    // paddingTop: 30,
-    // paddingBottom: 30
+    marginTop: 60,
+    marginBottom: 40,
   },
   logo: {
     flex: 1,
@@ -269,7 +271,6 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     marginRight: 20,
     marginBottom: 80,
-    fontWeight: '100',
     fontSize: 16,
     color: '#CCC',
     backgroundColor: 'transparent'
@@ -284,18 +285,22 @@ const styles = StyleSheet.create({
   touchableOpacity: {
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: '#FF3366',
     height: BUTTON_HEIGHT,
   },
   formContainer: {
     paddingTop: 30,
     paddingBottom: 10,
-    // marginBottom: 50,
     flex: 1,
   },
+  animatedButton: {
+    zIndex: 99,
+    backgroundColor: '#FF3366',
+    alignSelf: 'center'
+  },
   buttonText: {
+    alignItems: 'center',
+    justifyContent: 'center',
     color: 'white',
-    fontWeight: '100',
     fontSize: 16,
   },
   signUpContainer: {
@@ -307,13 +312,11 @@ const styles = StyleSheet.create({
     color: '#CCC',
     marginRight: 6,
     fontSize: 16,
-    fontWeight: '100',
     backgroundColor: 'transparent'
   },
   signUpLink: {
     color: 'white',
     fontSize: 16,
-    fontWeight: '100',
     backgroundColor: 'transparent'
   },
   overlay: {

@@ -24,7 +24,10 @@ class HomeScreen extends Component {
     header: {
       tintColor: 'white',
       style: {
-        backgroundColor: '#E62565'
+        backgroundColor: '#E62565',
+      },
+      titleStyle: {
+        fontFamily: 'Raleway-Regular',
       }
     },
     tabBar: {
@@ -55,15 +58,22 @@ class HomeScreen extends Component {
 
   _renderRow(user, sectionId) {
     return (
-      <Card containerStyle={{padding: 0, margin: 0, borderWidth: 0}} >
-        <ListItem
-          roundAvatar
-          avatar={{uri: user.avatarUrl }}
-          key={sectionId}
-          title={user.name}
-          subtitle={user.subtitle}
-        />
-      </Card>
+      <ListItem
+        roundAvatar
+        avatar={{uri: user.avatarUrl }}
+        key={sectionId}
+        title={user.name}
+        subtitle={user.subtitle}
+        containerStyle={{
+          backgroundColor: 'white'
+        }}
+        titleStyle={{
+          fontFamily: 'Raleway-Light'
+        }}
+        subtitleStyle={{
+          fontFamily: 'Raleway-Light'
+        }}
+      />
     )
   }
   render() {

@@ -24,6 +24,13 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1A09F9EC0572455190F8DE70 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A5F0BB8457F4309A9E3EDC2 /* Zocial.ttf */; };
+		20C9F02F1E5FC4A900914EF7 /* AvenirLTStd-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F02E1E5FC4A900914EF7 /* AvenirLTStd-Book.otf */; };
+		20C9F04D1E5FC74800914EF7 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F04C1E5FC74800914EF7 /* OpenSans-Light.ttf */; };
+		20C9F0511E5FC76E00914EF7 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F04E1E5FC76E00914EF7 /* Raleway-Light.ttf */; };
+		20C9F0521E5FC76E00914EF7 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F04F1E5FC76E00914EF7 /* Raleway-Regular.ttf */; };
+		20C9F0531E5FC76E00914EF7 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F0501E5FC76E00914EF7 /* Raleway-Thin.ttf */; };
+		20C9F0551E5FC78F00914EF7 /* AvenirNextLTPro-UltLtCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F0541E5FC78F00914EF7 /* AvenirNextLTPro-UltLtCn.otf */; };
+		20C9F0571E5FC8BB00914EF7 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20C9F0561E5FC8BB00914EF7 /* AvenirNextLTPro-Regular.otf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -270,6 +277,13 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = OutsmartEventos/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1BAE654EE96C4687BB845B9D /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		20C9F02E1E5FC4A900914EF7 /* AvenirLTStd-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirLTStd-Book.otf"; sourceTree = "<group>"; };
+		20C9F04C1E5FC74800914EF7 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		20C9F04E1E5FC76E00914EF7 /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		20C9F04F1E5FC76E00914EF7 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		20C9F0501E5FC76E00914EF7 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
+		20C9F0541E5FC78F00914EF7 /* AvenirNextLTPro-UltLtCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLtCn.otf"; sourceTree = "<group>"; };
+		20C9F0561E5FC8BB00914EF7 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* OutsmartEventos-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutsmartEventos-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* OutsmartEventos-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OutsmartEventos-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5844F9496DC145E5B3FF5624 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -503,6 +517,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				20C9F0561E5FC8BB00914EF7 /* AvenirNextLTPro-Regular.otf */,
+				20C9F0541E5FC78F00914EF7 /* AvenirNextLTPro-UltLtCn.otf */,
+				20C9F04E1E5FC76E00914EF7 /* Raleway-Light.ttf */,
+				20C9F04F1E5FC76E00914EF7 /* Raleway-Regular.ttf */,
+				20C9F0501E5FC76E00914EF7 /* Raleway-Thin.ttf */,
+				20C9F04C1E5FC74800914EF7 /* OpenSans-Light.ttf */,
+				20C9F02E1E5FC4A900914EF7 /* AvenirLTStd-Book.otf */,
 				13B07FAE1A68108700A75B9A /* OutsmartEventos */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* OutsmartEventosTests */,
@@ -911,11 +932,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C9F02F1E5FC4A900914EF7 /* AvenirLTStd-Book.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				20C9F04D1E5FC74800914EF7 /* OpenSans-Light.ttf in Resources */,
+				20C9F0521E5FC76E00914EF7 /* Raleway-Regular.ttf in Resources */,
+				20C9F0531E5FC76E00914EF7 /* Raleway-Thin.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				55E33914142143ADAD7F4CF6 /* Entypo.ttf in Resources */,
 				F8B333B16CDE4B2E97B85A11 /* EvilIcons.ttf in Resources */,
+				20C9F0511E5FC76E00914EF7 /* Raleway-Light.ttf in Resources */,
 				13AACE7560504215A6F1FF7D /* FontAwesome.ttf in Resources */,
+				20C9F0551E5FC78F00914EF7 /* AvenirNextLTPro-UltLtCn.otf in Resources */,
+				20C9F0571E5FC8BB00914EF7 /* AvenirNextLTPro-Regular.otf in Resources */,
 				C9BAC0ECA2ED4CEF9EE8E23B /* Foundation.ttf in Resources */,
 				503ECB6F55294EA094D5B2F6 /* Ionicons.ttf in Resources */,
 				C918B65FACAD4BA79586FB23 /* MaterialCommunityIcons.ttf in Resources */,

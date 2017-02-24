@@ -23,6 +23,9 @@ const TabNavigatorComponent = TabNavigator({
 }, {
   tabBarOptions: {
     activeTintColor: '#e91e63',
+    labelStyle: {
+      fontFamily: 'Raleway-Light'
+    }
   },
 });
 
